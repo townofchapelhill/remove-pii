@@ -1,24 +1,35 @@
+# importing dependencies
 import csv
 import sys
 import os
 import pandas
+import scrubadub
+import datasync
 
 # select file to open, display data in command line
 fileName = input("What's the name of the desired file? ")
 df = pandas.read_csv(fileName + ".csv")
+df.head(n=5)
 print(df)
 
-# select which column you wish to delete (working on ability to select multiple)
-# if the column has a leading space in front of the column name, it won't recognize
-# input that doesn't have it.
-# i.e: (Humidity) doesn't work, but ( Humidity) does
-# working on making that more intuitive
-columnName = input("Which columns would you like to delete? ")
-df.drop([columnName], axis=1, inplace = True)
-print(df)
+# checks with user to confirm if more rows need cleaning
+def checkFinished():
+    yesNo = input("Column cleaned. Would you like to scrub another column? ")
+    if yesNo == 'yes':
+        scrubData()
+    else:
+        # writes new .csv file  
+        df.to_csv(fileName + "_scrubbed.csv", encoding='utf-8', index = False)
+        print('Scrubbed file complete.')
 
-# writes a new edited version without selected info (needs work, only writes headers right now)
-cf = open(fileName + ".csv")
-ef = open(fileName + "_edited.csv", "w")
-for line in df:
-    ef.write(line)
+# scrubs the data from the chosen column
+# only does one at a time, working on improving that
+def scrubData():
+    columnName = input("Which columns would you like to delete? ")
+    print("Scrubbing data... (larger datasets take time)")
+    scrub = lambda x: scrubadub.clean(' ')
+    df[str(columnName)] = df[str(columnName)].apply(scrub)
+    checkFinished()
+
+# calls scrubData function
+scrubData()
