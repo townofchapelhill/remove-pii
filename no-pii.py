@@ -7,10 +7,7 @@ import scrubadub
 import datasync
 import time
 
-dirty_data = ['Activity_Age_Gender', 'Activity Listing Report_11-08-04 AM_11088', 'Activity Section Listing Segments By Subtype_11-05-29 AM_11124', 'Activity Visit Report_11-02-25 AM_5052',
-'Pass Type Summary Visit Report_ 1-31-46 PM_2076', 'Athletics HH Reservation Report_12-37-07 PM_5808', 'Facility Class Listing Report_12-44-08 PM_6628', 'Facility Location Listing Report_12-40-42 PM_6292',
-'Global Cancellation Report_11-28-25 AM_7844', 'permitsjan23', 'Global Trial Balance Summary - HH Net Balance_12-13-54 PM_8708', 'Pass Bottom Line Report_11-56-49 AM_9052', 'PASS MEMBER W AGE _11-45-45 AM_8708',
-'Refund Detail Report_11-31-42 AM_10244', 'User Listing Report_10-09-52 AM_6780']
+dirty_data = []
 
 check_list = ['Email', 'Emails', 'Name', 'Names', 'Credit Card', 'Phone Number', 'Phone', 'Telephone',
 'Credit Card Number', 'Email Address', 'Address', 'Street Address', 'First Name', 'Last Name', 'PIN Number', 'PIN',
